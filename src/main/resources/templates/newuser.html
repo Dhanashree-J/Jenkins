@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - Pharmacy System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f2ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0077cc;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, select {
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005fa3;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .link a {
+            text-decoration: none;
+            color: #0077cc;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto 20px auto;
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://s.tmimgcdn.com/scr/1200x627/247500/creative-pharmacy-logo-template_247538-original.png" alt="Pharmacy Logo">
+        <h2>Register New Account</h2>
+        <form th:action="@{/register}" th:object="${user}" method="post">
+            <label for="username">Username</label>
+            <input type="text" th:field="*{username}" required>
+
+            <label for="password">Password</label>
+            <input type="password" th:field="*{password}" required>
+
+            <label for="role">Role</label>
+            <select th:field="*{role}" required>
+                <option value="Owner">Owner</option>
+                <option value="Pharmacist">Pharmacist</option>
+            </select>
+
+            <input type="submit" value="Register">
+        </form>
+        <div class="link">
+            <p>Already registered? <a th:href="@{/}">Login here</a></p>
+        </div>
+    </div>
+</body>
+</html>
